@@ -1,6 +1,7 @@
 package exam1.studentsystemplus;
 
 public class User {
+    //用户名、密码、身份证号、电话号码
     String username;
     String password;
     String idCard;
