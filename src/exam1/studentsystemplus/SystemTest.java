@@ -97,33 +97,38 @@ public class SystemTest {
 
     /**
      * 注册
-      */
+     */
 
     public static void register(ArrayList<User> list) {
         /**
          * 用户名部分
-          */
+         */
 
         System.out.println("请输入用户名：");
         String username, password, idCard, phoneNumber;
         Scanner sc = new Scanner(System.in);
         while (true) {
+            /**
+             * 先验证格式是否正确，再验证是否唯一
+             * 因为在以后所有数据都存在数据库中，校验需要使用网络资源
+             */
             String input = sc.next();
-            int flag = containUsername(list, input);
-            if (flag == -1) {
-                if (checkUsername(input)) {
+            if (checkUsername(input)) {
+                int flag = containUsername(list, input);
+                if (flag == -1) {
                     username = input;
                     break;
                 } else {
-                    System.out.println("用户名不合法，请重新输入：");
+                    System.out.println("用户名已存在，请重新输入：");
                 }
             } else {
-                System.out.println("用户名已存在，请重新输入：");
+                System.out.println("用户名不合法，请重新输入：");
             }
+
         }
         /**
          * 密码部分
-          */
+         */
 
         while (true) {
             System.out.println("请输入密码：");
@@ -140,7 +145,7 @@ public class SystemTest {
 
         /**
          * 身份证验证
-          */
+         */
 
         while (true) {
             System.out.println("请输入身份证号码：");
@@ -155,7 +160,7 @@ public class SystemTest {
 
         /**
          * 手机号验证
-          */
+         */
 
         while (true) {
             System.out.println("请输入手机号码：");
@@ -181,7 +186,7 @@ public class SystemTest {
 
     /**
      * 忘记密码
-      */
+     */
 
     public static void forgetPW(ArrayList<User> list
     ) {
@@ -227,9 +232,10 @@ public class SystemTest {
         String result = new String(pin);
         return result;
     }
+
     /**
-     *  用户名已注册返回索引i，未注册返回-1
-      */
+     * 用户名已注册返回索引i，未注册返回-1
+     */
     public static int containUsername(ArrayList<User> list, String username) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getUsername().equals(username)) {
@@ -246,14 +252,17 @@ public class SystemTest {
     public static boolean checkUsername(String username) {
         int cnt = 0;
         boolean flag1 = false, flag2 = false;
-        if (username.length() >= 3 && username.length() <= 15) {
+        int len = username.length();
+        if (len >= 3 && len <= 15) {
             flag1 = true;
         } else {
             System.out.println("用户名长度必须在3~15位之间！");
         }
-        for (int i = 0; i < username.length(); i++) {
-            if ((username.charAt(i) >= 'a' && username.charAt(i) <= 'z') || (username.charAt(i) >= 'A' && username.charAt(i) <= 'Z')) {
+        for (int i = 0; i < len; i++) {
+            char val = username.charAt(i);
+            if ((val >= 'a' && val <= 'z') || (val >= 'A' && val <= 'Z')) {
                 cnt++;
+                break;
             }
         }
         if (cnt == 0) {
@@ -270,12 +279,14 @@ public class SystemTest {
 
     /**
      * 身份证合法性检查
-      */
+     */
 
     public static boolean checkID(String idCard) {
         int cnt = 0;
+
         for (int i = 0; i < idCard.length() - 1; i++) {
-            if (idCard.charAt(i) >= '0' && idCard.charAt(i) <= '9') {
+            char val = idCard.charAt(i);
+            if (val >= '0' && val <= '9') {
                 cnt++;
             }
         }
