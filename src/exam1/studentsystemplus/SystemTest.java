@@ -6,7 +6,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 /**
- * git test
+ * git final test
+ */
+
+/**
+ * 2020.7.18：done
+ * Java 阶段作业
+ * 学生管理系统登录界面
+ * studentManagementSystemLoginInterface
  */
 public class SystemTest {
     /**
