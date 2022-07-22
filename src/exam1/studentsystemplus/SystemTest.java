@@ -5,8 +5,13 @@ import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-// git test3
+/**
+ * git test
+ */
 public class SystemTest {
+    /**
+     * 登录界面
+     */
     public static void main(String[] args) {
         ArrayList<User> list = new ArrayList<User>();
         System.out.println("欢迎来到学生管理系统");
@@ -26,7 +31,9 @@ public class SystemTest {
 
     }
 
-
+    /**
+     * 信息展示，仅用作调试
+     */
     public static void showInfo(ArrayList<User> list) {
         for (int i = 0; i < list.size(); i++) {
             System.out.println("用户名：" + list.get(i).getUsername());
@@ -37,6 +44,9 @@ public class SystemTest {
         }
     }
 
+    /**
+     * 登录检查
+     */
     public static void login(ArrayList<User> list) {
         Scanner sc = new Scanner(System.in);
         System.out.println("请输入用户名：");
@@ -52,7 +62,9 @@ public class SystemTest {
                 if (pin.equals(anwser)) {
                     if (password.equals(list.get(indx).getPassword())) {
                         System.out.println("登录成功！欢迎" + username + "!");
-                        //进入主系统
+                        /**
+                         * 进入主系统
+                         */
                         break;
                     } else {
                         cnt++;
@@ -72,9 +84,15 @@ public class SystemTest {
 
     }
 
+    /**
+     * 注册
+      */
 
     public static void register(ArrayList<User> list) {
-        // 用户名部分
+        /**
+         * 用户名部分
+          */
+
         System.out.println("请输入用户名：");
         String username, password, idCard, phoneNumber;
         Scanner sc = new Scanner(System.in);
@@ -92,7 +110,10 @@ public class SystemTest {
                 System.out.println("用户名已存在，请重新输入：");
             }
         }
-        // 密码部分
+        /**
+         * 密码部分
+          */
+
         while (true) {
             System.out.println("请输入密码：");
             String input = sc.next();
@@ -106,7 +127,10 @@ public class SystemTest {
             }
         }
 
-        // 身份证验证
+        /**
+         * 身份证验证
+          */
+
         while (true) {
             System.out.println("请输入身份证号码：");
             String input = sc.next();
@@ -118,7 +142,10 @@ public class SystemTest {
             }
         }
 
-        // 手机号验证
+        /**
+         * 手机号验证
+          */
+
         while (true) {
             System.out.println("请输入手机号码：");
             String input = sc.next();
@@ -140,6 +167,10 @@ public class SystemTest {
         System.out.println("注册成功！");
         showInfo(list);
     }
+
+    /**
+     * 忘记密码
+      */
 
     public static void forgetPW(ArrayList<User> list
     ) {
@@ -185,7 +216,9 @@ public class SystemTest {
         String result = new String(pin);
         return result;
     }
-
+    /**
+     *  用户名已注册返回索引i，未注册返回-1
+      */
     public static int containUsername(ArrayList<User> list, String username) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getUsername().equals(username)) {
@@ -194,6 +227,10 @@ public class SystemTest {
         }
         return -1;
     }
+
+    /**
+     * 用户名合法性检查
+     */
 
     public static boolean checkUsername(String username) {
         int cnt = 0;
@@ -219,6 +256,10 @@ public class SystemTest {
             return false;
         }
     }
+
+    /**
+     * 身份证合法性检查
+      */
 
     public static boolean checkID(String idCard) {
         int cnt = 0;
