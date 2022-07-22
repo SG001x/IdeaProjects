@@ -23,15 +23,19 @@ public class SystemTest {
         ArrayList<User> list = new ArrayList<User>();
         System.out.println("欢迎来到学生管理系统");
         while (true) {
-            System.out.println("请选择操作1登录 2注册 3忘记密码");
+            System.out.println("请选择操作：1.登录 2.注册 3.忘记密码 4.退出");
             Scanner sc = new Scanner(System.in);
             String input = sc.next();
             switch (input) {
                 case "1" -> login(list);
                 case "2" -> register(list);
                 case "3" -> forgetPW(list);
+                case "4" -> {
+                    System.out.println("再见");
+                    System.exit(0);
+                }
                 default -> {
-                    System.out.println("输入错误，请重新输入（1~3）：");
+                    System.out.println("输入错误，请重新输入（1~4）：");
                 }
             }
         }
