@@ -1,4 +1,4 @@
-package exam1.studentsystemplus;
+package exam1.studentsystemplus.domain;
 
 public class User {
     //用户名、密码、身份证号、电话号码及其对应的set与get方法

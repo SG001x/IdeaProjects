@@ -1,7 +1,7 @@
 package exam1.studentsystemplus;
 
-import javax.naming.AuthenticationNotSupportedException;
-import java.time.temporal.Temporal;
+import exam1.studentsystemplus.domain.User;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -16,11 +16,17 @@ import java.util.Scanner;
  * studentManagementSystemLoginInterface
  */
 public class SystemTest {
+    static ArrayList<User> list = new ArrayList<User>();
+    static {
+        //添加一些用户信息
+        list.add(new User("xiatian", "2455170735xtx", "330211200112131017","15958884551"));
+    }
+
     /**
      * 登录界面
      */
     public static void main(String[] args) {
-        ArrayList<User> list = new ArrayList<User>();
+
         System.out.println("欢迎来到学生管理系统");
         while (true) {
             System.out.println("请选择操作：1.登录 2.注册 3.忘记密码 4.退出");
@@ -39,6 +45,7 @@ public class SystemTest {
                 }
             }
         }
+
 
     }
 
@@ -76,6 +83,8 @@ public class SystemTest {
                         /**
                          * 进入主系统
                          */
+                        StudentSystem ss = new StudentSystem();
+                        StudentSystem.startStudentSystem();
                         break;
                     } else {
                         cnt++;
